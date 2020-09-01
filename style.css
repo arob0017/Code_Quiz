@@ -1,0 +1,7 @@
+.navbar {
+    padding: 1%;
+}
+.quiz-begin, .quiz-finish, .score-history {
+    text-align: center;
+    padding: 5%;
+}

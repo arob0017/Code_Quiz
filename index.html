@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8"/>
+
+<head>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amelia's Code Quiz</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
         <nav class="navbar">
             <button type="button" class="btn btn-success" id="Highscore-btn">View High Scores!</button>
@@ -15,15 +18,45 @@
         </nav>
     </header>
     <main>
-        <h1>Code Quiz Challenge</h1>
-        <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score-time by 10 seconds! Good Luck</p>
+        <div class="Quiz">
 
-    </main>    
+            <div class="quiz-begin">
+                <h1>Code Quiz Challenge</h1>
+                <p>Try to answer the following code-related questions within the time limit.<br>
+                    Keep in mind that incorrect answers will penalize your score-time by 10 seconds!<br>
+                    Good Luck!!!
+                </p>
+                <button type="button" class="btn btn-success" id="start-btn">Start Quiz</button>
+            </div>
 
+            <div class="question" id="question"></div>
+                <div class="question-container">
+                    <div class="title" id="question-title"></div>
+                    <div class="answer-btn" id="answer-btn"></div>
+                </div>
+            </div>
 
+            <div class="quiz-Done" id="quiz-Done">
+                <h1>All Done</h1>
+                <p>Your final score is <span id="final"></span></p>
+                <div class="input">Enter initials: 
+                    <input type="text" id="final-input">
+                    <button type="button" class="btn btn-success" id="final-submit">Submit</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="score-history">
+            <h1>High Scores</h1>
+            <div class="scores" id="scores"></div>
+            <div class="buttons">
+                <button type="button" class="btn btn-success" id="back">Go Back</button>
+                <button type="button" class="btn btn-success" id="clear-history">Clear History</button>
+            </div>
+        </div>
+    </main>
 
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
-
-
