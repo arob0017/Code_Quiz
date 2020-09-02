@@ -14,49 +14,50 @@
     <header>
         <nav class="navbar">
             <button type="button" class="btn btn-success" id="Highscore-btn">View High Scores!</button>
-            <div class="nav-item" class="time">Time Left: <span id="seconds">00</span></div>
-        </nav>
+            <span class="nav-item" id="timer">Time Left: 00</span>
     </header>
-    <main>
-        <div class="Quiz">
 
-            <div class="quiz-begin">
-                <h1>Code Quiz Challenge</h1>
-                <p>Try to answer the following code-related questions within the time limit.<br>
-                    Keep in mind that incorrect answers will penalize your score-time by 10 seconds!<br>
-                    Good Luck!!!
-                </p>
-                <button type="button" class="btn btn-success" id="start-btn">Start Quiz</button>
-            </div>
+    <div class="Quiz">
 
-            <div class="question" id="question"></div>
-                <div class="question-container">
-                    <div class="title" id="question-title"></div>
-                    <div class="answer-btn" id="answer-btn"></div>
-                </div>
-            </div>
-
-            <div class="quiz-Done" id="quiz-Done">
-                <h1>All Done</h1>
-                <p>Your final score is <span id="final"></span></p>
-                <div class="input">Enter initials: 
-                    <input type="text" id="final-input">
-                    <button type="button" class="btn btn-success" id="final-submit">Submit</button>
-                </div>
-            </div>
-
+        <div class="quiz-begin" id="quiz-begin">
+            <h1>Code Quiz Challenge</h1>
+            <p>Try to answer the following code-related questions within the time limit.<br>
+                Keep in mind that incorrect answers will penalize your score-time by 10 seconds!<br>
+                Good Luck!!!
+            </p>
+            <button type="button" class="btn btn-success" id="start-btn">Start Quiz</button>
         </div>
 
-        <div class="score-history">
-            <h1>High Scores</h1>
-            <div class="scores" id="scores"></div>
-            <div class="buttons">
-                <button type="button" class="btn btn-success" id="back">Go Back</button>
-                <button type="button" class="btn btn-success" id="clear-history">Clear History</button>
-            </div>
+        
+        <div class="question-container" id="question">
+            <div class="title" id="question-title"></div>
+            <button class="answer-btn" class="btn btn-success" id="answer-A"></button>
+            <button class="answer-btn" class="btn btn-success" id="answer-B"></button>
+            <button class="answer-btn" class="btn btn-success" id="answer-C"></button>
+            <button class="answer-btn" class="btn btn-success" id="answer-D"></button>
         </div>
-    </main>
+    
+
+    <div class="quiz-Done" id="quiz-Done">
+        <h1>All Done</h1>
+        <p>Your final score is <span id="final"></span></p>
+        <div class="input">Enter initials:
+            <input type="text" id="final-input">
+            <button type="button" class="btn btn-success" id="final-submit">Submit</button>
+        </div>
+    </div>
+
+    <div class="score-history" id="score-history">
+        <h1>High Scores</h1>
+        <div class="scores" id="scores"></div>
+        <div class="buttons">
+            <button type="button" class="btn btn-success" id="back">Go Back</button>
+            <button type="button" class="btn btn-success" id="clear-history">Clear History</button>
+        </div>
+    </div>
+
 
     <script src="script.js"></script>
 </body>
+
 </html>
