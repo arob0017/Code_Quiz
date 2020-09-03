@@ -14,7 +14,6 @@ var highscoreScore = document.querySelector("#highscore-score")
 var backBtn = document.querySelector("#back");
 var clearHistoryBtn = document.querySelector("#clear-history");
 var scoreInput = document.querySelector("#scoreInput");
-var storage = JSON.parse(localStorage.getItem("highscores")) || []
 
 var quizBegin = document.querySelector("#quiz-begin");
 var questionEL = document.querySelector("#question");
@@ -51,6 +50,7 @@ var secondsLeft = 60;
 var timerInterval;
 var score = 0;
 var answer;
+var storage = JSON.parse(localStorage.getItem("highscores")) || []
 
 // When start button is clicked, quiz will begin and time will countdown
 startBtn.addEventListener("click", setTime);
@@ -147,7 +147,7 @@ function highscore() {
         // get values from the elements and update local storage with the score
         // 1. get the old value fromlocal storage
 
-        storage;
+        storage = JSON.parse(localStorage.getItem("highscores")) || []
         storage = storage.concat({ value, score })
         localStorage.setItem("highscores", JSON.stringify(storage))
     }
@@ -159,7 +159,7 @@ function generateHighscores() {
     highscoreInitial.innerHTML = "";
     highscoreScore.innerHTML = "";
 
-    storage;
+    storage = JSON.parse(localStorage.getItem("highscores")) || []
     if (storage.length) {
         // Created a message telling the user to play their first game
         var resultsEl = document.createElement("p")
