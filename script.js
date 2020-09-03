@@ -147,20 +147,19 @@ function highscore() {
         // get values from the elements and update local storage with the score
         // 1. get the old value fromlocal storage
 
-        storage = JSON.parse(localStorage.getItem("highscores")) || []
         storage = storage.concat({ value, score })
         localStorage.setItem("highscores", JSON.stringify(storage))
     }
     quizDone.style.display = "none";
     scoreHistory.style.display = "block";
+    generateHighscores
 };
 
 function generateHighscores() {
     highscoreInitial.innerHTML = "";
     highscoreScore.innerHTML = "";
 
-    storage = JSON.parse(localStorage.getItem("highscores")) || []
-    if (storage.length) {
+    if (storage.length === 0) {
         // Created a message telling the user to play their first game
         var resultsEl = document.createElement("p")
         var resultsDiv = document.createElement("div");
@@ -174,13 +173,12 @@ function generateHighscores() {
         for (i = 0; i < storage.length; i++) {
             var newInitial = document.createElement("li");
             var newScore = document.createElement("li");
-            newInitial.textContent = storage[i].value;
+            newInitial.textContent = storage[i].value + " - " + storage[i].score;
             newScore.textContent = storage[i].score;
             highscoreInitial.appendChild(newInitial);
-            highscoreScore.appendChild(newScore);
 
         }
-
+        removeEls(resultsEl);
     }
 }
 
@@ -209,8 +207,9 @@ backBtn.addEventListener("click", function () {
 
 // clear history button
 clearHistoryBtn.addEventListener("click", clearScore);
-function clearScore() {
+function clearScore(event) {
+    event.preventDefault();
     window.localStorage.clear();
-    highscoreInitial = "";
-    highscoreScore = "";
+    removeEls(highscoreInitial);
 };
+
