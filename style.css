@@ -11,13 +11,15 @@
     text-align: center;
     padding: 5%;
 }
-
-.title {
-    font-size: 30px;
+.Quiz {
+    text-align: center;
+}
+.title, h1 {
+    font-size: 35px;
     font-weight: bold;
 }
 
-.answer-btn, .buttons, .final-submit {
+.answer-btn, .final-submit {
     color: white;
     background: #28a745;
     border-color: #28a745;
@@ -30,5 +32,9 @@
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
+    
 }
-
+input {
+    font-size: 20px;
+    margin-bottom: 5px;
+}

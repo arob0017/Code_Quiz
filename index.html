@@ -28,7 +28,7 @@
             <button type="button" class="btn btn-success" id="start-btn">Start Quiz</button>
         </div>
 
-        
+
         <div class="question-container" id="question">
             <div class="title" id="question-title"></div>
             <button class="answer-btn" class="btn btn-success" id="answer-A"></button>
@@ -36,25 +36,32 @@
             <button class="answer-btn" class="btn btn-success" id="answer-C"></button>
             <button class="answer-btn" class="btn btn-success" id="answer-D"></button>
         </div>
-    
 
+    </div>
     <div class="quiz-Done" id="quiz-Done">
         <h1>All Done</h1>
         <p>Your final score is <span id="final"></span></p>
-        <div class="input">Enter initials:
-            <input type="text" id="final-input">
-            <button type="button" class="btn btn-success" id="final-submit">Submit</button>
+        <div class="input">Enter initials: <br>
+            <input type="text" id="initials"><br>
+            <button type="button" class="btn btn-success" id="submit-btn">Submit</button>
         </div>
     </div>
 
     <div class="score-history" id="score-history">
         <h1>High Scores</h1>
-        <div class="scores" id="scores"></div>
+        <div id="scoreInput">
+            <div id="highscore-initials"></div>
+            <div id="highscore-score"></div>
+        </div>
         <div class="buttons">
             <button type="button" class="btn btn-success" id="back">Go Back</button>
             <button type="button" class="btn btn-success" id="clear-history">Clear History</button>
         </div>
     </div>
+
+
+
+
 
 
     <script src="script.js"></script>
