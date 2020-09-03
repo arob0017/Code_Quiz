@@ -14,13 +14,12 @@ var highscoreScore = document.querySelector("#highscore-score")
 var backBtn = document.querySelector("#back");
 var clearHistoryBtn = document.querySelector("#clear-history");
 var scoreInput = document.querySelector("#scoreInput");
-
+var storage = JSON.parse(localStorage.getItem("highscores")) || []
 
 var quizBegin = document.querySelector("#quiz-begin");
 var questionEL = document.querySelector("#question");
 var quizDone = document.querySelector("#quiz-Done");
 var scoreHistory = document.querySelector("#score-history")
-var storage = JSON.parse(localStorage.getItem("highscores")) || []
 
 var answerBtn = document.querySelectorAll(".answer-btn");
 
@@ -83,7 +82,7 @@ function timerDone() {
 function askQuestions() {
     if (questionCounter < questions.length) {
         questionTitle.textContent = questions[questionCounter].question;
-        // use a foreach
+
         for (var i = 0; i < answerBtn.length; i++) {
             answerBtn[i].textContent = questions[questionCounter].choices[i];
         }
@@ -110,10 +109,12 @@ function checkAnswer(event) {
     mainContent.appendChild(displayAnswerDiv);
 
     if (userInput === questions[questionCounter].answer) {
+        //add to score and display correct
         score++;
         displayAnswerEl.textContent = "Correct!";
 
     } else {
+        //deduct 10 seconds from time and display wrong
         secondsLeft -= 10;
         displayAnswerEl.textContent = "Wrong!";
     }
@@ -145,6 +146,7 @@ function highscore() {
     } else {
         // get values from the elements and update local storage with the score
         // 1. get the old value fromlocal storage
+
         storage;
         storage = storage.concat({ value, score })
         localStorage.setItem("highscores", JSON.stringify(storage))
@@ -168,8 +170,6 @@ function generateHighscores() {
         resultsDiv.appendChild(resultsEl);
         scoreInput.appendChild(resultsDiv);
     } else {
-        // rewrite as a foreach
-
 
         for (i = 0; i < storage.length; i++) {
             var newInitial = document.createElement("li");
