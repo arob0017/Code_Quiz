@@ -20,6 +20,7 @@ var quizBegin = document.querySelector("#quiz-begin");
 var questionEL = document.querySelector("#question");
 var quizDone = document.querySelector("#quiz-Done");
 var scoreHistory = document.querySelector("#score-history")
+var storage = JSON.parse(localStorage.getItem("highscores")) || []
 
 var answerBtn = document.querySelectorAll(".answer-btn");
 
@@ -144,7 +145,7 @@ function highscore() {
     } else {
         // get values from the elements and update local storage with the score
         // 1. get the old value fromlocal storage
-        var storage = JSON.parse(localStorage.getItem("highscores")) || []
+        storage;
         storage = storage.concat({ value, score })
         localStorage.setItem("highscores", JSON.stringify(storage))
     }
@@ -153,11 +154,10 @@ function highscore() {
 };
 
 function generateHighscores() {
-    // highscoreInitial.innerHTML = value; // doesn't exist
-    // highscoreScore.innerHTML = score;
+    highscoreInitial.innerHTML = "";
+    highscoreScore.innerHTML = "";
 
-    var storage = JSON.parse(localStorage.getItem("highscores")) || []
-
+    storage;
     if (storage.length) {
         // Created a message telling the user to play their first game
         var resultsEl = document.createElement("p")
@@ -169,22 +169,18 @@ function generateHighscores() {
         scoreInput.appendChild(resultsDiv);
     } else {
         // rewrite as a foreach
-        for (var i = 0; i < storage.length; i++) {
-            // create a new item or element for the displaying of the high score
 
-            var newInitialSpan = document.createElement("li");
-            var newScoreSpan = document.createElement("li");
-            var storedDiv = document.createElement("div");
-            newInitialSpan.textContent = storage[i].value;
-            newScoreSpan.textContent = storage[i].score;
-            storedDiv.innerHTML = newInitialSpan.textContent + " - " + newScoreSpan.textContent;
 
-            highscoreScore.appendChild(newScoreSpan)
-            highscoreInitial.appendChild(newInitialSpan)
-            storedDiv.appendChild(highscoreInitial, highscoreScore);
-            scoreInput.appendChild(storedDiv)
-            scoreInput.appendChild(newScoreSpan);
-        };
+        for (i = 0; i < storage.length; i++) {
+            var newInitial = document.createElement("li");
+            var newScore = document.createElement("li");
+            newInitial.textContent = storage[i].value;
+            newScore.textContent = storage[i].score;
+            highscoreInitial.appendChild(newInitial);
+            highscoreScore.appendChild(newScore);
+
+        }
+
     }
 }
 
@@ -209,3 +205,12 @@ backBtn.addEventListener("click", function () {
     score = 0;
     questionCounter = 0;
 });
+
+
+// clear history button
+clearHistoryBtn.addEventListener("click", clearScore);
+function clearScore() {
+    window.localStorage.clear();
+    highscoreInitial = "";
+    highscoreScore = "";
+};
