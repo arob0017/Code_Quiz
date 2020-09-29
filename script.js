@@ -145,7 +145,6 @@ function highscore() {
         alert("Initials cannot be blank");
     } else {
         // get values from the elements and update local storage with the score
-        // 1. get the old value fromlocal storage
 
         storage = storage.concat({ value, score })
         localStorage.setItem("highscores", JSON.stringify(storage))
