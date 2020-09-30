@@ -168,6 +168,7 @@ function generateHighscores() {
         resultsDiv.appendChild(resultsEl);
         hsList.appendChild(resultsDiv);
     } else {
+        // creating a bootstrap table to display high scores and initials
         var newHead = document.createElement("thead");
         var newHeadRow = document.createElement("tr");
         var newRow1 = document.createElement("th");
