@@ -42,3 +42,7 @@ input {
 li {
     list-style: none;
 }
+.table {
+    width: 60%;
+    margin: 0 auto;
+}

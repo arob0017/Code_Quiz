@@ -21,6 +21,7 @@ var quizDone = document.querySelector("#quiz-Done");
 var scoreHistory = document.querySelector("#score-history")
 
 var answerBtn = document.querySelectorAll(".answer-btn");
+var hsList = document.querySelector("#hsList");
 
 var questions = [
     {
@@ -145,19 +146,18 @@ function highscore() {
         alert("Initials cannot be blank");
     } else {
         // get values from the elements and update local storage with the score
-
         storage = storage.concat({ value, score })
         localStorage.setItem("highscores", JSON.stringify(storage))
     }
     quizDone.style.display = "none";
     scoreHistory.style.display = "block";
-    generateHighscores
+    generateHighscores();
 };
 
 function generateHighscores() {
-    highscoreInitial.innerHTML = "";
-    highscoreScore.innerHTML = "";
 
+    hsList.innerHTML = "";
+    console.log(storage.length);
     if (storage.length === 0) {
         // Created a message telling the user to play their first game
         var resultsEl = document.createElement("p")
@@ -166,21 +166,34 @@ function generateHighscores() {
 
         resultsEl.textContent = "No results stored. Please play your first game!";
         resultsDiv.appendChild(resultsEl);
-        scoreInput.appendChild(resultsDiv);
+        hsList.appendChild(resultsDiv);
     } else {
-
+        var newHead = document.createElement("thead");
+        var newHeadRow = document.createElement("tr");
+        var newRow1 = document.createElement("th");
+        var newRow2 = document.createElement("th");
+        var newTableBody = document.createElement("tbody");
+        newRow1.textContent = "Initials";
+        newRow2.textContent = "Score";
+        newHeadRow.appendChild(newRow1)
+        newHeadRow.appendChild(newRow2);
+        newHead.appendChild(newHeadRow);
         for (i = 0; i < storage.length; i++) {
-            var newInitial = document.createElement("li");
-            var newScore = document.createElement("li");
-            newInitial.textContent = storage[i].value + " - " + storage[i].score;
-            newScore.textContent = storage[i].score;
-            highscoreInitial.appendChild(newInitial);
 
+            var newDataRow = document.createElement("tr");
+            var newData1 = document.createElement("td");
+            newData1.textContent = storage[i].value;
+            var newData2 = document.createElement("td");
+            newData2.textContent = storage[i].score;
+            newDataRow.appendChild(newData1);
+            newDataRow.appendChild(newData2);
+            newTableBody.appendChild(newDataRow);
         }
-        removeEls(resultsEl);
+
+        hsList.appendChild(newHead);
+        hsList.appendChild(newTableBody);
     }
 }
-
 
 // When 'View High Scores!' button is clicked, the html will updated the html displayed to high score history
 highscoreBtn.addEventListener("click", function () {
@@ -209,6 +222,7 @@ clearHistoryBtn.addEventListener("click", clearScore);
 function clearScore(event) {
     event.preventDefault();
     window.localStorage.clear();
+    location.reload();
     removeEls(highscoreInitial);
 };
 
